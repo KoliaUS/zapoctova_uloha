@@ -1,37 +1,52 @@
-<script setup>
-import TheWelcome from '@/components/TheWelcome.vue';
+<script>
+import Article from "@/components/Article.vue";
+import Preview from "@/components/Preview.vue";
 
 export default {
-  components: {TheWelcome},
-data() {
-  return {
-    books: []
-  }
-},
-async created() {
-  const res = await fetch('http://localhost:3000/books',{method:'GET'});
-  console.log(res);
-  this.articles = await res.json();
+    components: {Preview, Article},
+    data() {
+        return {
+            articles: [
+                {
+                    id:1,
+                    image: 'https://picsum.photos/seed/picsum/500',
+                    title: "Title",
+                    date: new Date(),
+                    text: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam egestas wisi a erat.
+Integer tempor. Pellentesque ipsum. Integer malesuada. Vestibulum fermentum tortor id mi. Aenean placerat.
+Pellentesque arcu. Phasellus rhoncus.
+`
+                },
+                {
+                    id:2,
+                    image: 'https://picsum.photos/seed/picsum/500',
+                    title: "Title",
+                    date: new Date(),
+                    text: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam egestas wisi a erat.
+Integer tempor. Pellentesque ipsum. Integer malesuada. Vestibulum fermentum tortor id mi. Aenean placerat.
+Pellentesque arcu. Phasellus rhoncus.
+`
+                },
+                {
+                    id:3,
+                    image: 'https://picsum.photos/seed/picsum/500',
+                    title: "Title",
+                    date: new Date(),
+                    text: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam egestas wisi a erat.
+Integer tempor. Pellentesque ipsum. Integer malesuada. Vestibulum fermentum tortor id mi. Aenean placerat.
+Pellentesque arcu. Phasellus rhoncus.
+`
+                },
+            ]
+        }
+    }
 }
-}
-
-
 </script>
 
 <template>
-  <main>
-    <section class="py-5 text-center container">
-      <div class="row py-lg-5">
-        <div class="col-lg-6 col-md-8 mx-auto" v-for="book in books">
-         <preview :id="book.id" :name="book.name" :autor="book.autor" :about="book.about" :count="book.count"></preview>
-          <p>
-            <a href="#" class="btn btn-primary my-2">Main call to action</a>
-            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2  pb-3 pt-3" v-for="article in articles">
+      <Preview :id="article.id" :title="article.title" :date="article.date" :text="article.text" :image="article.image"></Preview>
+    </div>
+  </div>
 </template>
-
-
