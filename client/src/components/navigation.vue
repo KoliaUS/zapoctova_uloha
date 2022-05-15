@@ -21,10 +21,10 @@
               </router-link>
             </li>
             <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"/></svg>
-                Orders
-              </a>
+              <router-link class="nav-link text-secondary" to="/new-article">
+                <em class="bi-archive d-block mx-auto mb-1 w-25 h-25" ></em>
+                new
+              </router-link>
             </li>
             <li>
               <a href="#" class="nav-link text-white">
